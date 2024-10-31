@@ -14,7 +14,7 @@ jobs:
           repository: ttyllc/python-app.git
           ref: master
       - name: Copy code to server
-        run: scp -r . cdci_sample_user@ims2.ttyllc.net:/home/cdci_sample_user/python_app
+        run: sshpass -p ${{ secrets.SSH_PRIVATE_KEY }} scp -r . cdci_sample_user@ims2.ttyllc.net:/home/cdci_sample_user/python_app
       - name: Restart web server
         run: sudo systemctl restart apache2
       - name: List directory contents

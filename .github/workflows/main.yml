@@ -18,6 +18,9 @@ jobs:
         run: scp -r . cdci_sample_user@ims2.ttyllc.net:/home/cdci_sample_user/python_app
       - name: Restart web server
         run: sudo systemctl restart apache2
+      - name: List directory contents
+        run: ls /home/cdci_sample_user/python_app
+        shell: bash
 
 
 

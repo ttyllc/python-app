@@ -13,6 +13,8 @@ jobs:
         with:
           repository: ttyllc/python-app.git
           ref: master
+      - name: Disable strict host key checking
+        run: echo "StrictHostKeyChecking no" >> ~/.ssh/config
       - name: Copy code to server
         run: sshpass -p ${{ secrets.SSH_PRIVATE_KEY }} scp -r . cdci_sample_user@ims2.ttyllc.net:/home/cdci_sample_user/python_app
       - name: Restart web server
